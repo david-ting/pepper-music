@@ -1,0 +1,29 @@
+@mixin changing-color-mixin($name, $type) {
+  @keyframes #{$name} {
+    0% {
+      #{$type}: red;
+    }
+    #{100/6 * 1%} {
+      #{$type}: orange;
+    }
+    #{100/6 * 2* 1%} {
+      #{$type}: yellow;
+    }
+    #{100/6 * 3* 1%} {
+      #{$type}: green;
+    }
+    #{100/6 * 4* 1%} {
+      #{$type}: blue;
+    }
+    #{100/6 * 5* 1%} {
+      #{$type}: indigo;
+    }
+    #{100/6 * 6* 1%} {
+      #{$type}: violet;
+    }
+  }
+}
+
+@include changing-color-mixin(changing-bg-color, background-color);
+@include changing-color-mixin(changing-border-color, border-color);
+@include changing-color-mixin(changing-box-shadow-color, --box-shadow-color);

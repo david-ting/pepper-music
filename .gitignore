@@ -1,0 +1,10 @@
+/node_modules
+/bk
+/.env
+/.eslintrc.json
+
+/frontend/.vscode
+/frontend/.env
+/frontend/.eslintrc.json
+/frontend/bk
+/frontend/node_modules
