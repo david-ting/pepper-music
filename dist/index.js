@@ -65,6 +65,7 @@ var scopes = [
     "playlist-read-private",
 ];
 var sessionKey = "spotifySession";
+app.set('trust proxy', 1); // trust first proxy
 app.use(cookie_parser_1.default());
 var RedisStore = connect_redis_1.default(express_session_1.default);
 app.use(express_session_1.default({

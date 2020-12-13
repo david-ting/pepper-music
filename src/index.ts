@@ -28,6 +28,7 @@ const scopes = [
 ];
 const sessionKey = "spotifySession";
 
+app.set('trust proxy', 1) // trust first proxy
 app.use(cookieParser());
 const RedisStore = connectRedis(session);
 app.use(
