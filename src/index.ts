@@ -8,7 +8,7 @@ import cookieParser from "cookie-parser";
 import querystring from "querystring";
 import { redisClient } from "./redisOperation";
 import { authenticateUser } from "./middleware";
-import path from 'path';
+import path from "path";
 
 dotenv.config();
 
@@ -221,17 +221,16 @@ app.get(
   }
 );
 
-// if (app.get("env") !== "development") {
-//   // Serve any static files
-//   app.use(express.static(path.join(__dirname, "client/build")));
+if (app.get("env") !== "development") {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, "..", "frontend/build")));
 
-//   // Handle React routing, return all requests to React app
-//   app.get("*", function (req, res) {
-//     res.sendFile(path.join(__dirname, "client/build", "index.html"));
-//   });
-// }
+  // Handle React routing, return all requests to React app
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "..", "frontend/build", "index.html"));
+  });
+}
 
 app.listen(port, () => {
-  console.log(path.join(__dirname, '..', '..app'));
   console.log(`listening on ${port}`);
 });

@@ -244,15 +244,16 @@ app.get([
         return [2 /*return*/];
     });
 }); });
-if (app.get("env") !== "development") {
-    // Serve any static files
-    app.use(express_1.default.static(path_1.default.join(__dirname, "..", "frontend/build")));
-    // Handle React routing, return all requests to React app
-    app.get("*", function (req, res) {
-        res.sendFile(path_1.default.join(__dirname, "..", "frontend/build", "index.html"));
-    });
-}
+// if (app.get("env") !== "development") {
+//   // Serve any static files
+//   app.use(express.static(path.join(__dirname, "client/build")));
+//   // Handle React routing, return all requests to React app
+//   app.get("*", function (req, res) {
+//     res.sendFile(path.join(__dirname, "client/build", "index.html"));
+//   });
+// }
 app.listen(port, function () {
+    console.log(path_1.default.join(__dirname, '..', '..app'));
     console.log("listening on " + port);
 });
 //# sourceMappingURL=index.js.map
