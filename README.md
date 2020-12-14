@@ -1,7 +1,8 @@
-:musical_note: <b>Pepper Music</b>'s live demo: https://pepper-music.herokuapp.com/ <br>
+# :musical_note: <b>Pepper Music</b> <br>
+Live demo: https://pepper-music.herokuapp.com/ <br>
 A website that you can log in with your spotify account and then enjoy the music by searching your favorite albums, artists, playlists and tracks.
 
-<b>Setup <br></b>
+### <b>Setup <br></b>
 frontend: React <br>
 backend: Node with Express framework <br>
 
