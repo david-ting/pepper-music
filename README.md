@@ -1,5 +1,5 @@
 # :musical_note: <b>Pepper Music</b> <br>
-Live demo: https://pepper-music.herokuapp.com/ <br>
+The project has been published to heroku. ⭐Live demo: https://pepper-music.herokuapp.com/ <br>
 A website that you can log in with your spotify account and then enjoy the music by searching your favorite albums, artists, playlists and tracks.
 
 ### <b>Setup <br></b>
