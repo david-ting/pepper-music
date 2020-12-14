@@ -13,9 +13,11 @@ Refer to the Authorization Code Flow
 the express server has been set up to get the access tokens and refresh tokens with the users' authorization. Redis has been used for the session management. The access tokens can be refreshed by the server as long as the users' sessions with the server are not expired. 
 As for the frontend part, it has been built with ReactJS (create react app). The express server has been integrated with the React app by serving the static files (html, css and js files) built by the create-react-app and redirecting the requests to frontend routing for non-backend requests.
 
+#### Environmental variables
 The .env file has to be created for running the codes properly. <br>
 The following env variables have to be included in the file.
 * clientId, clientSecret, redirectUri by registering your app <br> (https://developer.spotify.com/documentation/general/guides/app-settings/)
 * frontendRedirectUri for redirecting the browser to frontend route after getting the tokens from spotify Api
 * sessionSecret for express-session to sign the session ID cookie
 * REDIS_URL for accessing the redis database
+* REACT_APP_BACKEND_URL for react app's routing
