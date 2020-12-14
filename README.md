@@ -5,6 +5,7 @@ A website that you can log in with your spotify account and then enjoy the music
 ### <b>Setup <br></b>
 frontend: React <br>
 backend: Node with Express framework <br>
+API: Spotify Web API
 
 Refer to the Authorization Code Flow 
 <br>
