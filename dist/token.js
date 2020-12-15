@@ -44,8 +44,8 @@ var node_fetch_1 = __importDefault(require("node-fetch"));
 var querystring_1 = __importDefault(require("querystring"));
 var dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-var clientId = process.env.clientId;
-var clientSecret = process.env.clientSecret;
+var CLIENT_ID = process.env.CLIENT_ID;
+var CLIENT_SECRET = process.env.CLIENT_SECRET;
 exports.refreshAccessToken = function (refreshToken) { return __awaiter(void 0, void 0, void 0, function () {
     var response, data, error_1;
     return __generator(this, function (_a) {
@@ -56,7 +56,7 @@ exports.refreshAccessToken = function (refreshToken) { return __awaiter(void 0, 
                         method: "POST",
                         headers: {
                             "Content-Type": "application/x-www-form-urlencoded",
-                            Authorization: "Basic " + Buffer.from(clientId + ":" + clientSecret, "utf-8").toString("base64"),
+                            Authorization: "Basic " + Buffer.from(CLIENT_ID + ":" + CLIENT_SECRET, "utf-8").toString("base64"),
                         },
                         body: querystring_1.default.stringify({
                             grant_type: "refresh_token",

@@ -53,12 +53,11 @@ var path_1 = __importDefault(require("path"));
 dotenv_1.default.config();
 var app = express_1.default();
 var port = process.env.PORT || 8000;
-var nodeEnv = process.env.NODE_ENV;
-var clientId = process.env.clientId;
-var clientSecret = process.env.clientSecret;
-var redirectUri = process.env.redirectUri;
-var frontendRedirectUri = process.env.frontendRedirectUri;
-var sessionSecret = process.env.sessionSecret;
+var CLIENT_ID = process.env.CLIENT_ID;
+var CLIENT_SECRET = process.env.CLIENT_SECRET;
+var REDIRECT_URI = process.env.REDIRECT_URI;
+var FRONTEND_REDIRECT_URI = process.env.FRONTEND_REDIRECT_URI;
+var SESSION_SECRET = process.env.SESSION_SECRET;
 var scopes = [
     "user-read-private",
     "user-read-email",
@@ -70,7 +69,7 @@ app.use(cookie_parser_1.default());
 var RedisStore = connect_redis_1.default(express_session_1.default);
 app.use(express_session_1.default({
     store: new RedisStore({ client: redisOperation_1.redisClient }),
-    secret: sessionSecret,
+    secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -87,9 +86,9 @@ app.get("/api/login", function (req, res) {
     var authorizeURL = "https://accounts.spotify.com/authorize?" +
         querystring_1.default.stringify({
             response_type: "code",
-            client_id: clientId,
+            client_id: CLIENT_ID,
             scope: scopes.join(" "),
-            redirect_uri: redirectUri,
+            redirect_uri: REDIRECT_URI,
             state: session,
             show_dialog: true,
         });
@@ -118,9 +117,9 @@ app.get("/api/callback", function (req, res) {
         body: querystring_1.default.stringify({
             grant_type: "authorization_code",
             code: code,
-            redirect_uri: redirectUri,
-            client_id: clientId,
-            client_secret: clientSecret,
+            redirect_uri: REDIRECT_URI,
+            client_id: CLIENT_ID,
+            client_secret: CLIENT_SECRET,
         }),
     })
         .then(function (response) {
@@ -133,7 +132,7 @@ app.get("/api/callback", function (req, res) {
         req.session.accessToken = data.access_token;
         req.session.refreshToken = data.refresh_token;
         req.session.expiry = new Date(new Date().getTime() + data.expires_in * 1000).toString();
-        res.redirect("" + frontendRedirectUri);
+        res.redirect("" + FRONTEND_REDIRECT_URI);
     })
         .catch(function (error) {
         console.error(error);
