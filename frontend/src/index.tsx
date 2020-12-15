@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styling/index.css";
+import "./styling/index.scss";
 import App from "./App";
 import UserContextProvider from "./contexts/UserContextProvider";
 
