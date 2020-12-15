@@ -3,8 +3,8 @@ import querystring from "querystring";
 import dotenv from "dotenv";
 dotenv.config();
 
-const clientId = process.env.clientId;
-const clientSecret = process.env.clientSecret;
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
 export const refreshAccessToken = async (
   refreshToken: string
@@ -15,7 +15,7 @@ export const refreshAccessToken = async (
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         Authorization: `Basic ${Buffer.from(
-          clientId + ":" + clientSecret,
+          CLIENT_ID + ":" + CLIENT_SECRET,
           "utf-8"
         ).toString("base64")}`,
       },

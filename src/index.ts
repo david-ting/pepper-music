@@ -14,12 +14,11 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 8000;
-const nodeEnv = process.env.NODE_ENV;
-const clientId = process.env.clientId;
-const clientSecret = process.env.clientSecret;
-const redirectUri = process.env.redirectUri;
-const frontendRedirectUri = process.env.frontendRedirectUri;
-const sessionSecret = process.env.sessionSecret;
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const REDIRECT_URI = process.env.REDIRECT_URI;
+const FRONTEND_REDIRECT_URI = process.env.FRONTEND_REDIRECT_URI;
+const SESSION_SECRET = process.env.SESSION_SECRET;
 
 const scopes = [
   "user-read-private",
@@ -34,7 +33,7 @@ const RedisStore = connectRedis(session);
 app.use(
   session({
     store: new RedisStore({ client: redisClient }),
-    secret: sessionSecret as string,
+    secret: SESSION_SECRET as string,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -54,9 +53,9 @@ app.get("/api/login", (req, res) => {
     "https://accounts.spotify.com/authorize?" +
     querystring.stringify({
       response_type: "code",
-      client_id: clientId,
+      client_id: CLIENT_ID,
       scope: scopes.join(" "),
-      redirect_uri: redirectUri,
+      redirect_uri: REDIRECT_URI,
       state: session,
       show_dialog: true,
     });
@@ -92,9 +91,9 @@ app.get("/api/callback", (req, res) => {
     body: querystring.stringify({
       grant_type: "authorization_code",
       code: code,
-      redirect_uri: redirectUri,
-      client_id: clientId,
-      client_secret: clientSecret,
+      redirect_uri: REDIRECT_URI,
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET,
     }),
   })
     .then((response) => {
@@ -110,7 +109,7 @@ app.get("/api/callback", (req, res) => {
         new Date().getTime() + data.expires_in * 1000
       ).toString();
 
-      res.redirect(`${frontendRedirectUri}`);
+      res.redirect(`${FRONTEND_REDIRECT_URI}`);
     })
     .catch((error) => {
       console.error(error);
