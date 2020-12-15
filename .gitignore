@@ -2,6 +2,7 @@
 /bk
 /.env
 /.eslintrc.json
+/dist
 
 /frontend/.vscode
 /frontend/.env
