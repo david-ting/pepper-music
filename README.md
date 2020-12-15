@@ -14,8 +14,8 @@ the express server has been set up to get the access tokens and refresh tokens w
 As for the frontend part, it has been built with ReactJS (create react app). The express server has been integrated with the React app by serving the static files (html, css and js files) built by the create-react-app and redirecting the requests to frontend routing for non-backend requests.
 
 #### Environmental variables
-* clientId, clientSecret, redirectUri by registering your app <br> (https://developer.spotify.com/documentation/general/guides/app-settings/)
-* frontendRedirectUri for redirecting the browser to frontend route after getting the tokens from spotify Api
-* sessionSecret for express-session to sign the session ID cookie
+* CLIENT_ID, CLIENT_SECRET, REDIRECT_URI by registering your app <br> (https://developer.spotify.com/documentation/general/guides/app-settings/)
+* FRONTEND_REDIRECT_URI for redirecting the browser to frontend route after getting the tokens from spotify Api
+* SESSION_SECRET for express-session to sign the session ID cookie
 * REDIS_URL for accessing the redis database
 * REACT_APP_BACKEND_URL for react app's routing
