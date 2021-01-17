@@ -27,3 +27,11 @@
 @include changing-color-mixin(changing-bg-color, background-color);
 @include changing-color-mixin(changing-border-color, border-color);
 @include changing-color-mixin(changing-box-shadow-color, --box-shadow-color);
+
+@mixin dynamic-color-mixin() {
+  border: 5px solid transparent;
+  --box-shadow-color: transparent;
+  box-shadow: 0 0 8px 8px var(--box-shadow-color);
+  animation: changing-border-color 10000ms linear 0ms infinite alternate both,
+    changing-box-shadow-color 10000ms linear 0ms infinite alternate both;
+}

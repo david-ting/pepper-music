@@ -67,6 +67,23 @@
   left: 0;
 }
 
+#music-person-container {
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  > div {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+#music-person {
+  width: 100%;
+  max-width: 400px;
+}
+
 .outer-container {
   background: repeating-linear-gradient(
     -45deg,
@@ -102,11 +119,7 @@
   padding: 10vh 3vw;
   width: 100%;
   background-color: rgba(128, 128, 128, 0.558);
-  border: 5px solid transparent;
-  --box-shadow-color: transparent;
-  box-shadow: 0 0 8px 8px var(--box-shadow-color);
-  animation: changing-border-color 10000ms linear 0ms infinite alternate both,
-    changing-box-shadow-color 10000ms linear 0ms infinite alternate both;
+  @include dynamic-color-mixin();
 }
 
 .search-bar {
@@ -148,6 +161,7 @@
   h3 {
     padding: 10px;
   }
+  @include dynamic-color-mixin();
 }
 
 .page {
